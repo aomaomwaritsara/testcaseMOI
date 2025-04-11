@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on darwin)" generated="2025-03-11T14:29:34.380551" rpa="false" schemaversion="5">
+<suite id="s1" name="Moi" source="/Users/aompyc/Desktop/WORKDF/automate/moi">
+<suite id="s1-s1" name="Testcases" source="/Users/aompyc/Desktop/WORKDF/automate/moi/testcases">
+<suite id="s1-s1-s1" name="Login Tests" source="/Users/aompyc/Desktop/WORKDF/automate/moi/testcases/login_tests.robot">
+<test id="s1-s1-s1-t1" name="Login With Invalid Credentials" line="16">
+<kw name="Open Login Page" owner="login_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-11T14:29:34.466224" level="INFO">Opening browser 'chrome' to base url 'https://office.depth1st.net/MOI_Platform_68/'.</msg>
+<msg time="2025-03-11T14:29:34.639763" level="WARN">The chromedriver version (133.0.6943.53) detected in PATH at /opt/homebrew/bin/chromedriver might not be compatible with the detected chrome version (134.0.6998.46); currently, chromedriver 134.0.6998.88 is recommended for chrome 134.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-11T14:29:34.465911" elapsed="4.469991"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-03-11T14:29:38.939190" elapsed="0.619236"/>
+</kw>
+<status status="PASS" start="2025-03-11T14:29:34.465286" elapsed="5.093324"/>
+</kw>
+<kw name="Input Credentials" owner="login_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-11T14:29:39.559916" level="INFO">Typing text 'invalid_user' into text field '//*[@id="loginField"]'.</msg>
+<arg>//*[@id="loginField"]</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-11T14:29:39.559379" elapsed="0.147610"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-11T14:29:39.707585" level="INFO">Typing text 'invalid_pass' into text field '//*[@id="password"]'.</msg>
+<arg>//*[@id="password"]</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-11T14:29:39.707170" elapsed="0.057471"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-03-11T14:29:39.765231" level="INFO">Clicking button 'xpath=//input[@value='เข้าสู่ระบบ']'.</msg>
+<arg>xpath=//input[@value='เข้าสู่ระบบ']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-11T14:29:39.764850" elapsed="0.096346"/>
+</kw>
+<arg>${INVALID_USERNAME}</arg>
+<arg>${INVALID_PASSWORD}</arg>
+<status status="PASS" start="2025-03-11T14:29:39.558953" elapsed="0.302386"/>
+</kw>
+<kw name="Verify Login Failed" owner="login_keywords">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>ไม่พบรหัสผู้ใช้ในระบบ</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-03-11T14:29:39.861771" elapsed="0.331258"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-03-11T14:29:41.305772" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-03-11T14:29:40.193303" elapsed="1.113345"/>
+</kw>
+<status status="PASS" start="2025-03-11T14:29:39.861508" elapsed="1.445624"/>
+</kw>
+<kw name="Close Browser Session" owner="login_keywords">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-03-11T14:29:41.308016" elapsed="0.108027"/>
+</kw>
+<status status="PASS" start="2025-03-11T14:29:41.307526" elapsed="0.108878"/>
+</kw>
+<doc>Verify user cannot log in with invalid credentials</doc>
+<status status="PASS" start="2025-03-11T14:29:34.464651" elapsed="6.952217"/>
+</test>
+<doc>Test cases for Login Functionality</doc>
+<status status="PASS" start="2025-03-11T14:29:34.391278" elapsed="7.026904"/>
+</suite>
+<status status="PASS" start="2025-03-11T14:29:34.390397" elapsed="7.032659"/>
+</suite>
+<status status="PASS" start="2025-03-11T14:29:34.382443" elapsed="7.041928"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Moi" id="s1" pass="1" fail="0" skip="0">Moi</stat>
+<stat name="Testcases" id="s1-s1" pass="1" fail="0" skip="0">Moi.Testcases</stat>
+<stat name="Login Tests" id="s1-s1-s1" pass="1" fail="0" skip="0">Moi.Testcases.Login Tests</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-11T14:29:34.639763" level="WARN">The chromedriver version (133.0.6943.53) detected in PATH at /opt/homebrew/bin/chromedriver might not be compatible with the detected chrome version (134.0.6998.46); currently, chromedriver 134.0.6998.88 is recommended for chrome 134.*, so it is advised to delete the driver in PATH and retry</msg>
+</errors>
+</robot>

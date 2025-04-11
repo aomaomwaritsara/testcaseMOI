@@ -1,0 +1,212 @@
+
+    # กรอกชื่อกิจกรรมหลัก
+    ${current_date}=    Get Current Date    result_format=%Y%m%d
+    ${random_activity}=    Evaluate    random.choice(${ACTIVITY_NAMES})    modules=random
+    ${index}=    Evaluate    ${ACTIVITY_NAMES}.index("${random_activity}") + 1
+    ${activity_with_date}=    Set Variable    ${current_date}-${index} ${random_activity}
+    Log To Console    Selected Activity: ${activity_with_date}
+    Input Text    xpath=//input[@name='formData.mainActivity']   ${activity_with_date}
+
+    Generate Activity Name
+    # 🔹 ดึงวันที่และเวลาปัจจุบันในรูปแบบ YYYYMMDD-HH:MM:SS
+    ${current_date}=    Get Current Date    result_format=%Y%m%d
+    ${current_time}=    Get Current Date    result_format=%H:%M:%S
+    # 🔹 สุ่มเลือกกิจกรรมจาก ACTIVITY_NAMES
+    ${random_activity}=    Evaluate    random.choice(${ACTIVITY_NAMES})    modules=random
+    # 🔹 รวมวันที่ + เวลา + กิจกรรมที่เลือก
+    ${activity_with_datetime}=    Set Variable    ${current_date}-${current_time} ${random_activity}
+    Log To Console    Selected Activity: ${activity_with_datetime}
+    # 🔹 กรอกข้อมูลลงในฟอร์ม
+    Input Text    xpath=//input[@name='formData.mainActivity']    ${activity_with_datetime}
+
+
+        # 🔹 กรอกชื่อกิจกรรมหลัก (สร้างชื่อสุ่ม)
+    ${activity}    Evaluate    random.choice(${ACTIVITY_NAMES})
+    Input Text    xpath=//input[@name='formData.mainActivity']   ${activity}
+
+    ${DATE_TIME}      ${DATE}-%{time}=    Get Current Date    result_format=%Y%m%d-%H:%M:%S
+${ACTIVITY_NAME}    ${activity}    Evaluate    random.choice(${ACTIVITY_NAMES})
+
+
+*** Settings ***
+Library  SeleniumLibrary
+Library  Collections  # ใช้สำหรับสุ่มข้อมูลจาก List
+Library  String  # ใช้สำหรับสร้างชื่อแบบสุ่ม
+
+*** Keywords ***
+Go To Budget Request Page
+    Wait Until Element Is Visible   xpath=//span[contains(text(),'ระบบแพลตฟอร์มกลางข้อมูลกระทรวงมหาดไทย')]   timeout=10s
+    Click Element     xpath=//span[contains(text(),'ระบบแพลตฟอร์มกลางข้อมูลกระทรวงมหาดไทย')]  
+
+    Wait Until Element Is Visible    xpath=//a[contains(text(),'บันทึกคำของบประมาณโครงการ')]  timeout=10s
+    Click Element     xpath=//a[contains(text(),'บันทึกคำของบประมาณโครงการ')] 
+
+    Wait Until Element Is Visible    xpath=//a[contains(text(),'แบบคำของบประมาณ')]    timeout=10s
+    Click Element    xpath=//a[contains(text(),'แบบคำของบประมาณ')]
+   
+    Wait Until Page Contains    แบบคำของบประมาณ    timeout=10s
+Click Add Budget Request
+    Wait Until Element Is Visible    xpath=//button[contains(text(),'เพิ่มข้อมูล')]    10s
+    Click Button    xpath=//button[contains(text(),'เพิ่มข้อมูล')]
+    Sleep    2s  # รอให้หน้าโหลด
+  
+Fill Budget Request Form
+    [Documentation]    เลือกค่าจาก Dropdown และกรอกข้อมูลแบบสุ่ม
+    Sleep    3s  # รอให้หน้าโหลดก่อน
+  
+    # 🔹 เลือก ปีงบประมาณ (บังคับเลือก 2567)
+    Wait Until Page Contains    ปีงบประมาณ    10s
+    Wait Until Element Is Visible    xpath=(//select)[1]   10s
+    Select From List By Value    xpath=(//select)[1]    2567
+    
+    # 🔹 เลือก จังหวัด (บังคับเลือก 20)
+    #Wait Until Page Contains    จังหวัด    10s
+    #Wait Until Element Is Visible    xpath=//select[contains(@name,'province')]   15s
+    #Select From List By Value    xpath=//select[contains(@name,'province')]    20
+      
+   # 🔹 เลือก ประเด็นการพัฒนาของจังหวัด (บังคับเลือก 13)
+    Wait Until Page Contains    ประเด็นการพัฒนาของจังหวัด    10s
+    Wait Until Element Is Visible    xpath=//select[@name='annualPlanId']  15s
+    Click Element    xpath=//select[@name='annualPlanId']
+    Select From List By Value    xpath=//select[@name='annualPlanId']    13
+    ${selected}    Get Selected List Label    xpath=//select[@name='annualPlanId']
+    Log    ค่าในดรอปดาวน์: ${selected}
+
+
+    Sleep    10s  # รอให้ DOM อัปเดต
+
+# 🔹 เลือก แผนงาน (บังคับเลือก 12)
+    Wait Until Page Contains    แผนงาน    10s
+    Wait Until Element Is Visible   xpath=//select[@name='workPlanId']  15s
+    Select From List By Value    xpath=//select[@name='workPlanId']    12
+    Sleep    10s  # รอให้ค่าถูกอัปเดต
+  
+# 🔹 เลือก ชื่อโครงการ (บังคับเลือก 11)
+     Wait Until Page Contains    ชื่อโครงการ    10s
+     Wait Until Element Is Visible   xpath=//select[@name='projectId']  15s
+     Select From List By Value    xpath=//select[@name='projectId']  11
+     Sleep    10s  # รอให้ค่าถูกอัปเดต
+
+ # 🔹 รอให้ค่าถูกเลือกครบก่อนกดบันทึก
+    Wait Until Element Contains    xpath=//select[@name='annualPlanId']  12  10s
+    Wait Until Element Contains    xpath=//select[@name='workPlanId']  12  10s
+    Wait Until Element Contains    xpath=//select[@name='projectId']  11  10s
+
+# 🔹 กรอกชื่อกิจกรรมหลัก (สร้างชื่อสุ่ม)
+    ${activity}    Evaluate    random.choice(${ACTIVITY_NAMES})
+    Input Text    xpath=//input[@name='formData.mainActivity']   ${activity}
+    Sleep    10s
+  
+# 🔹 เลือก ยุทธศาสตร์ (เลือกค่าตามประเด็นการพัฒนาของจังหวัด)
+    Wait Until Page Contains    ยุทธศาสตร์ชาติ    10s
+    Wait Until Element Is Visible   xpath=//select[@name='formData.nationalStrategy']  15s
+    ${national_Strategy_options}    Get List Items    xpath=//select[@name='formData.nationalStrategy']
+    Run Keyword If    'ยุทธศาสตร์ชาติด้านการสร้างโอกาสและความเสมอภาคทางสังคม' in ${national_Strategy_options}    Select From List By Label    xpath=//select[@name='formData.nationalStrategy']    ยุทธศาสตร์ชาติด้านการสร้างโอกาสและความเสมอภาคทางสังคม
+
+    # 🔹 เลือกแผนแม่บท  (เลือกค่าตามประเด็นการพัฒนาของจังหวัด)
+    Wait Until Element Is Visible    css=select[name='formData.masterPlan']    timeout=15s
+    ${master_plan_options}    Get List Items    xpath=//select[@name='formData.masterPlan']
+    Run Keyword If    'แผนแม่บทภายใต้ยุทธศาสตร์ชาติ ประเด็น พลังทางสังคม' in ${master_plan_options}    Select From List By Label    xpath=//select[@name='formData.masterPlan']    แผนแม่บทภายใต้ยุทธศาสตร์ชาติ ประเด็น พลังทางสังคม
+
+Click Submit Button
+    # 🔹 กดปุ่มบันทึก
+    Sleep    5s  # รอให้ Scroll เสร็จ
+    Click Element    xpath=//button[@id='savePage1']
+
+    # 🔹 ตรวจสอบว่าบันทึกสำเร็จ
+    Wait Until Page Contains    บันทึกข้อมูลเรียบร้อย   30s
+    Capture Page Screenshot
+
+#Click Submit Next
+    # 🔹 กดปุ่มบันทึก
+    #Wait Until Element Is Visible     xpath=//button[@id='next-1']  timeout=10s
+    #Click Element     xpath=//button[@id='next-1']
+
+     #เพิ่มประเภทงบบุคลากร หมวดรายจ่าย ประเภทรายจ่าย
+    Wait Until Element Is Visible    xpath=//select[@name='budgetType']  timeout=15s
+    Select From List By Value    xpath=//select[@name='budgetType']   200000
+    Scroll Element Into View    xpath=//select[@name='paymentGruop']
+    Wait Until Element Is Visible    xpath=//select[@name='paymentGruop']  timeout=15s
+    Select From List By Value    xpath=//select[@name='paymentGruop']    210000
+    Scroll Element Into View    xpath=//select[@name='paymentType']
+    Wait Until Element Is Visible    xpath=//select[@name='paymentType']    timeout=15s
+    Select From List By Value    xpath=//select[@name='paymentType']   5210100
+    Scroll Element Into View    xpath=//button[contains(text(),'+ เพิ่มข้อมูล')] 
+    Click Button    xpath=//button[contains(text(),'+ เพิ่มข้อมูล')]
+    Sleep    5s
+    #เพิ่มจำนวนเงินและคำชี้แจง
+    Scroll Element Into View    xpath=//input[@name='explainList[0].amountStr'] 
+    Wait Until Element Is Visible    xpath=//input[@name='explainList[0].amountStr']    timeout=20s
+    Input Text    xpath=//input[@name='explainList[0].amountStr']    100000
+    Sleep    5s
+    #เพิ่มประเภทงบดำเนินงาน หมวดรายจ่าย ประเภทรายจ่าย
+    Wait Until Element Is Visible    xpath=//select[@name='budgetType']  timeout=15s
+    Select From List By Value    xpath=//select[@name='budgetType']   300000
+    Scroll Element Into View    xpath=//select[@name='paymentGruop']
+    Wait Until Element Is Visible    xpath=//select[@name='paymentGruop']  timeout=15s
+    Select From List By Value    xpath=//select[@name='paymentGruop']    310000
+    Scroll Element Into View    xpath=//select[@name='paymentType']
+    Wait Until Element Is Visible    xpath=//select[@name='paymentType']    timeout=15s
+    Select From List By Value    xpath=//select[@name='paymentType']   5310100
+    Scroll Element Into View    xpath=//button[contains(text(),'+ เพิ่มข้อมูล')] 
+    Click Button    xpath=//button[contains(text(),'+ เพิ่มข้อมูล')]
+    Sleep    5s
+    #เพิ่มจำนวนเงินและคำชี้แจง
+    Scroll Element Into View    xpath=//input[@name='explainList[1].amountStr'] 
+    Wait Until Element Is Visible    xpath=//input[@name='explainList[1].amountStr']    timeout=20s
+    Input Text    xpath=//input[@name='explainList[1].amountStr']    100000
+    Sleep    5s
+    #เพิ่มประเภทงบลงทุน หมวดรายจ่าย ประเภทรายจ่าย
+    Wait Until Element Is Visible    xpath=//select[@name='budgetType']  timeout=15s
+    Select From List By Value    xpath=//select[@name='budgetType']   400000
+    Scroll Element Into View    xpath=//select[@name='paymentGruop']
+    Wait Until Element Is Visible    xpath=//select[@name='paymentGruop']  timeout=15s
+    Select From List By Value    xpath=//select[@name='paymentGruop']    410000
+    Scroll Element Into View    xpath=//select[@name='paymentType']
+    Wait Until Element Is Visible    xpath=//select[@name='paymentType']    timeout=15s
+    Select From List By Value    xpath=//select[@name='paymentType']   5410100
+    Scroll Element Into View    xpath=//button[contains(text(),'+ เพิ่มข้อมูล')] 
+    Click Button    xpath=//button[contains(text(),'+ เพิ่มข้อมูล')]
+    Sleep    5s
+    #เพิ่มจำนวนเงินและคำชี้แจง
+    Scroll Element Into View    xpath=//input[@name='explainList[2].amountStr'] 
+    Wait Until Element Is Visible    xpath=//input[@name='explainList[2].amountStr']    timeout=20s
+    Input Text    xpath=//input[@name='explainList[2].amountStr']    100000
+    Sleep    5s
+    #เพิ่มประเภทงบอุดหนุน หมวดรายจ่าย ประเภทรายจ่าย
+    Wait Until Element Is Visible    xpath=//select[@name='budgetType']  timeout=15s
+    Select From List By Value    xpath=//select[@name='budgetType']   600000
+    Scroll Element Into View    xpath=//select[@name='paymentGruop']
+    Wait Until Element Is Visible    xpath=//select[@name='paymentGruop']  timeout=15s
+    Select From List By Value    xpath=//select[@name='paymentGruop']    610000
+    Scroll Element Into View    xpath=//select[@name='paymentType']
+    Wait Until Element Is Visible    xpath=//select[@name='paymentType']    timeout=15s
+    Select From List By Value    xpath=//select[@name='paymentType']   5610100
+    Scroll Element Into View    xpath=//button[contains(text(),'+ เพิ่มข้อมูล')] 
+    Click Button    xpath=//button[contains(text(),'+ เพิ่มข้อมูล')]
+    Sleep    5s
+    #เพิ่มจำนวนเงินและคำชี้แจง
+    Scroll Element Into View    xpath=//input[@name='explainList[3].amountStr'] 
+    Wait Until Element Is Visible    xpath=//input[@name='explainList[3].amountStr']    timeout=20s
+    Input Text    xpath=//input[@name='explainList[3].amountStr']    100000
+    Sleep    5s
+    #เพิ่มประเภทงบรายจ่ายอื่น หมวดรายจ่าย ประเภทรายจ่าย
+    Wait Until Element Is Visible    xpath=//select[@name='budgetType']  timeout=15s
+    Select From List By Value    xpath=//select[@name='budgetType']   500000
+    Scroll Element Into View    xpath=//select[@name='paymentGruop']
+    Wait Until Element Is Visible    xpath=//select[@name='paymentGruop']  timeout=15s
+    Select From List By Value    xpath=//select[@name='paymentGruop']    510000
+    Scroll Element Into View    xpath=//select[@name='paymentType']
+    Wait Until Element Is Visible    xpath=//select[@name='paymentType']    timeout=15s
+    Select From List By Value    xpath=//select[@name='paymentType']   5510100
+    Scroll Element Into View    xpath=//button[contains(text(),'+ เพิ่มข้อมูล')] 
+    Click Button    xpath=//button[contains(text(),'+ เพิ่มข้อมูล')]
+    Sleep    5s
+    #เพิ่มจำนวนเงินและคำชี้แจง
+    Scroll Element Into View    xpath=//input[@name='explainList[4].amountStr'] 
+    Wait Until Element Is Visible    xpath=//input[@name='explainList[4].amountStr']    timeout=20s
+    Input Text    xpath=//input[@name='explainList[4].amountStr']    100000
+    Sleep    5s
+
+
+    
