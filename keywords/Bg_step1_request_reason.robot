@@ -40,7 +40,7 @@ Fill Budget Request Form Part1
     Wait Until Element Is Visible   xpath=//select[@name='annualPlanId']    timeout=10s
     Click Element    xpath=//select[@name='annualPlanId']
     ${element_annualPlanId}    Get WebElement    xpath=//select[@name='annualPlanId']
-    Run Keyword And Warn On Failure     Select From List By Value     ${element_annualPlanId}   13
+    Run Keyword And Warn On Failure     Select From List By Value     ${element_annualPlanId}   15
     Sleep    3s  # รอให้ค่าใน dropdown ถูกอัปเดต
     #${annualPlan}    Get Selected List Label    xpath=//select[@name='annualPlanId']
     #Log    ค่าในดรอปดาวน์: ${annualPlan}  
@@ -50,7 +50,7 @@ Fill Budget Request Form Part1
     Wait Until Element Is Visible    xpath=//select[@name='workPlanId']    timeout=10s
     Click Element    xpath=//select[@name='workPlanId']
     ${element_workPlan}    Get WebElement    xpath=//select[@name='workPlanId']
-    Run Keyword And Warn On Failure   Select From List By Value     ${element_workPlan}   12
+    Run Keyword And Warn On Failure   Select From List By Value     ${element_workPlan}   17
     Sleep    3s  # รอให้ค่าใน dropdown ถูกอัปเดต
     #${workPlan}    Get Selected List Label    xpath=//select[@name='workPlanId']
     #Log    ค่าในดรอปดาวน์: ${workPlan}
@@ -60,7 +60,7 @@ Fill Budget Request Form Part1
      Wait Until Element Is Visible   xpath=//select[@name='projectId']    timeout=10s
      Click Element    xpath=//select[@name='projectId']
      ${element_project}    Get WebElement    xpath=//select[@name='projectId']
-     Run Keyword And Warn On Failure    Select From List By Value     ${element_project}  10
+     Run Keyword And Warn On Failure    Select From List By Value     ${element_project}  15
      Sleep    3s  # รอให้ค่าใน dropdown ถูกอัปเดต
      #${project}    Get Selected List Label    xpath=//select[@name='projectId']
      #Log    ค่าในดรอปดาวน์: ${project}
@@ -70,9 +70,9 @@ Fill Budget Request Form Part1
     # สุ่มเลือกกิจกรรมจาก ACTIVITY_NAMES ที่ได้จาก testdata
     ${activity}=    Evaluate    random.choice(${ACTIVITY_NAMES})    modules=random
     # ดึงวันที่และเวลาปัจจุบันในรูปแบบ YYYYMMDD-HH:MM:SS
-    ${DATE_TIME}=    Get Current Date    result_format=%Y%m%d-%H:%M:%S
+    ${DATE_TIME}=    Get Current Date    result_format=%d%m%Y-%H:%M:%S
     # รวมวันที่ + เวลา + ชื่อกิจกรรม
-    ${activity_with_time}=    Set Variable    ${DATE_TIME} (${activity})
+    ${activity_with_time}=    Set Variable    ${DATE_TIME} (${activity})รายจ่ายลงทุน IMP
     # กรอกข้อมูลลงในฟอร์ม
     Input Text    xpath=//input[@name='formData.mainActivity']    ${activity_with_time}
     # รอให้ input ปรากฏเพื่อความแน่ใจ

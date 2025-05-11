@@ -1,3 +1,3 @@
 *** Variables ***
-${LOGIN_URL}    https://office.depth1st.net/MOI_Platform_68/
+${LOGIN_URL}    https://uatplatform.moi.go.th/
 ${BROWSER}      chrome

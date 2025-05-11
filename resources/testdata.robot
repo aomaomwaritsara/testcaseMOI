@@ -1,6 +1,6 @@
 *** Variables ***
-${VALID_USERNAME}    org020
-${VALID_PASSWORD}    org020
+${VALID_USERNAME}    org020-1
+${VALID_PASSWORD}    org020-1
 ${INVALID_USERNAME}  invalid_user
 ${INVALID_PASSWORD}  invalid_pass
 
@@ -8,16 +8,22 @@ ${INVALID_PASSWORD}  invalid_pass
 ${ORGPROV_USERNAME}    org020
 ${ORGPROV_PASSWORD}    org020
 
+${ORGPROV_USERNAME1}    org020-1
+${ORGPROV_PASSWORD1}    org020-1
+
+${ORGPROV_USERNAME2}    Org020-2
+${ORGPROV_PASSWORD2}    Org020-2
+
 #data login role PRO จังหวัด
-${PRO_USERNAME}    prov020
-${PRO_PASSWORD}    prov020
+${PRO_USERNAME}    Aom_PROV20_1
+${PRO_PASSWORD}    Aom#1150
 
 #data login role GPRO กลุุ่มจังหวัด
 ${GPRO_USERNAME}    gprov020
 ${GPRO_PASSWORD}    gprov020
 
 #ชื่อกิจกรรมหลัก
-@{ACTIVITY_NAMES}   พัฒนาโครงสร้างพื้นฐาน   ส่งเสริมการศึกษา    พัฒนาสาธารณสุข    พัฒนาการศึกษา    พัฒนาชุมชน    ปรับปรุงการท่องเที่ยว
+@{ACTIVITY_NAMES}   พัฒนาโครงสร้างพื้นฐาน   ส่งเสริมการศึกษา    พัฒนาสาธารณสุข   พัฒนาการศึกษา    พัฒนาชุมชน    ปรับปรุงการท่องเที่ยว
 #ผู้รับผิดชอบ
 @{RESPONSEPERSON}   สมชาย ใจดี    มานะ จริงใจ    สมศรี ดีใจ    มานี ปิติ    เป็นหญิง รักดี
 #หลักการและเหตุผล
@@ -127,4 +133,4 @@ ${negativeImpact}    ไม่มี
 @{amounts}    100000    100000    100000    100000    100000
 #วิธีการบริหารจัดการหรือการดูแลบำรุงรักษา 
 ${maintain}    ทดสอบ วิธีการบริหารจัดการหรือการดูแลบำรุงรักษา เมื่อโครงการแล้วเสร็จ เพื่อให้เกิดความยั่งยืนของโครงการ
-${obstacle}    ทดสอบปัญหา อุปสรรค์และข้อจำกัด -
+${obstacle}    ทดสอบปัญหา อุปสรรค์และข้อจำกัด 

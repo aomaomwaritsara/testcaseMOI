@@ -1,0 +1,81 @@
+==============================================================================
+Budget Request Tests :: Test cases for Budget Request Functionality           
+==============================================================================
+Add New Budget Request :: เพิ่มข้อมูลแบบคำขอ                          [ WARN ] The chromedriver version (134.0.6998.88) detected in PATH at /opt/homebrew/bin/chromedriver might not be compatible with the detected chrome version (135.0.7049.86); currently, chromedriver 135.0.7049.95 is recommended for chrome 135.*, so it is advised to delete the driver in PATH and retry
+[ WARN ] Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.86)
+Stacktrace:
+0   chromedriver                        0x000000010503d804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x0000000105035ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x0000000104b89ea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x0000000104b63a78 chromedriver + 129656
+4   chromedriver                        0x0000000104bf9498 cxxbridge1$string$len + 549104
+5   chromedriver                        0x0000000104c12178 cxxbridge1$string$len + 650704
+6   chromedriver                        0x0000000104bc535c cxxbridge1$string$len + 335796
+7   chromedriver                        0x0000000105002cd4 cxxbridge1$str$ptr + 2545532
+8   chromedriver                        0x0000000105005fa0 cxxbridge1$str$ptr + 2558536
+9   chromedriver                        0x0000000104fe2d04 cxxbridge1$str$ptr + 2414508
+10  chromedriver                        0x0000000105006800 cxxbridge1$str$ptr + 2560680
+11  chromedriver                        0x0000000104fd3ba0 cxxbridge1$str$ptr + 2352712
+12  chromedriver                        0x000000010502645c cxxbridge1$str$ptr + 2690820
+13  chromedriver                        0x00000001050265e4 cxxbridge1$str$ptr + 2691212
+14  chromedriver                        0x0000000105035a50 cxxbridge1$str$ptr + 2753784
+15  libsystem_pthread.dylib             0x0000000186cd42e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000186ccf0fc thread_start + 8
+
+| FAIL |
+NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=135.0.7049.86)
+Stacktrace:
+0   chromedriver                        0x000000010503d804 cxxbridge1$str$ptr + 2785964
+1   chromedriver                        0x0000000105035ddc cxxbridge1$str$ptr + 2754692
+2   chromedriver                        0x0000000104b89ea8 cxxbridge1$string$len + 92928
+3   chromedriver                        0x0000000104b63a78 chromedriver + 129656
+4   chromedriver                        0x0000000104bf9498 cxxbridge1$string$len + 549104
+5   chromedriver                        0x0000000104c12178 cxxbridge1$string$len + 650704
+6   chromedriver                        0x0000000104bc535c cxxbridge1$string$len + 335796
+7   chromedriver                        0x0000000105002cd4 cxxbridge1$str$ptr + 2545532
+8   chromedriver                        0x0000000105005fa0 cxxbridge1$str$ptr + 2558536
+9   chromedriver                        0x0000000104fe2d04 cxxbridge1$str$ptr + 2414508
+10  chromedriver                        0x0000000105006800 cxxbridge1$str$ptr + 2560680
+11  chromedriver                        0x0000000104fd3ba0 cxxbridge1$str$ptr + 2352712
+12  chromedriver                        0x000000010502645c cxxbridge1$str$ptr + 2690820
+13  chromedriver                        0x00000001050265e4 cxxbridge1$str$ptr + 2691212
+14  chromedriver                        0x0000000105035a50 cxxbridge1$str$ptr + 2753784
+15  libsystem_pthread.dylib             0x0000000186cd42e4 _pthread_start + 136
+16  libsystem_pthread.dylib             0x0000000186ccf0fc thread_start + 8
+------------------------------------------------------------------------------
+Budget Request Tests :: Test cases for Budget Request Functionality   | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+Output:  /Users/aompyc/Desktop/WORKDF/automate/testcaseMOI/output.xml
+Log:     /Users/aompyc/Desktop/WORKDF/automate/testcaseMOI/log.html
+Report:  /Users/aompyc/Desktop/WORKDF/automate/testcaseMOI/report.html
+==============================================================================
+Budget Request Tests :: Test cases for Budget Request Functionality           
+==============================================================================
+Add New Budget Request :: เพิ่มข้อมูลแบบคำขอ                          [ WARN ] The chromedriver version (134.0.6998.88) detected in PATH at /opt/homebrew/bin/chromedriver might not be compatible with the detected chrome version (135.0.7049.86); currently, chromedriver 135.0.7049.95 is recommended for chrome 135.*, so it is advised to delete the driver in PATH and retry
+| FAIL |
+Element 'xpath=//div[contains(@class, 'swal2-container')]' still visible after 10 seconds.
+------------------------------------------------------------------------------
+Budget Request Tests :: Test cases for Budget Request Functionality   | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+Output:  /Users/aompyc/Desktop/WORKDF/automate/testcaseMOI/output.xml
+Log:     /Users/aompyc/Desktop/WORKDF/automate/testcaseMOI/log.html
+Report:  /Users/aompyc/Desktop/WORKDF/automate/testcaseMOI/report.html
+==============================================================================
+Budget Request Tests :: Test cases for Budget Request Functionality           
+==============================================================================
+Add New Budget Request :: เพิ่มข้อมูลแบบคำขอ                          [ WARN ] The chromedriver version (134.0.6998.88) detected in PATH at /opt/homebrew/bin/chromedriver might not be compatible with the detected chrome version (135.0.7049.86); currently, chromedriver 135.0.7049.95 is recommended for chrome 135.*, so it is advised to delete the driver in PATH and retry
+| FAIL |
+Element 'xpath=//div[contains(@class, 'swal2-container')]' still visible after 20 seconds.
+------------------------------------------------------------------------------
+Budget Request Tests :: Test cases for Budget Request Functionality   | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+Output:  /Users/aompyc/Desktop/WORKDF/automate/testcaseMOI/output.xml
+Log:     /Users/aompyc/Desktop/WORKDF/automate/testcaseMOI/log.html
+Report:  /Users/aompyc/Desktop/WORKDF/automate/testcaseMOI/report.html
