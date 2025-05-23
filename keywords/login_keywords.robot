@@ -27,6 +27,5 @@ SeleniumLibrary.Wait Until Element Is Visible   //*[@id="loginField"]
     Wait Until Page Contains    ไม่พบรหัสผู้ใช้ในระบบ   
     
 
-
 Close Browser
     Close Browser
