@@ -6,16 +6,16 @@ Resource    ../keywords/login_keywords.robot
 Library     SeleniumLibrary
 
 *** Test Cases ***
-Login With Valid Credentials
+ล็อคอินถูกต้อง
     [Documentation]    Verify user can log in with valid credentials
-    Open Login Page
-    Input Credentials    ${VALID_USERNAME}    ${VALID_PASSWORD}
-    Verify Login Successful
-    Close Browser Session
+    Open Browser To Application
+    กรอกข้อมูลเข้าสู่ระบบ   ${VALID_USERNAME}    ${VALID_PASSWORD}
+    ล็อคอินถูกต้อง
+    Close Browser
 
-Login With Invalid Credentials
+ล็อคอินไม่ถูกต้อง
     [Documentation]    Verify user cannot log in with invalid credentials
-    Open Login Page
-    Input Credentials    ${INVALID_USERNAME}    ${INVALID_PASSWORD}
-    Verify Login Failed
-    Close Browser Session
+    Open Browser To Application
+    กรอกข้อมูลเข้าสู่ระบบ   ${INVALID_USERNAME}    ${INVALID_PASSWORD}
+    ล็อคอินไม่ถูกต้อง
+    Close Browser 

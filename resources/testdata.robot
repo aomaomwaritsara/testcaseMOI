@@ -1,6 +1,6 @@
 *** Variables ***
-${VALID_USERNAME}    org020-1
-${VALID_PASSWORD}    org020-1
+${VALID_USERNAME}    org076
+${VALID_PASSWORD}    org076
 ${INVALID_USERNAME}  invalid_user
 ${INVALID_PASSWORD}  invalid_pass
 

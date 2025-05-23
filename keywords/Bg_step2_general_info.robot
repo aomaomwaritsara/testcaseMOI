@@ -5,7 +5,7 @@ Library    BuiltIn
 
 *** Keywords ***
 
-Fill Tab2 Part1
+กรอกข้อมูลส่วนที่1:ข้อมูลทั่วไปของโครงการ
    [Documentation]    เพิ่ม tab2 ส่วนที่ 1 ข้อมูลทั่วไปโครงการ
     # คลิกแท็บขยาย
     
@@ -32,7 +32,7 @@ Fill Tab2 Part1
     Wait Until Element Is Visible    xpath=//input[@name='formData.endYear']  timeout=10s
     Input Text    xpath=//input[@name='formData.endYear']   2569
 
-Fill Tab2 Part2
+กรอกข้อมูลส่วนที่2:สถานที่ดำเนินโครงการ
 # คลิกแท็บขยาย
   #  Wait Until Element Is Visible   xpath=//button[contains(text(),'ส่วนที่ 2 :สถานที่ดำเนินโครงการ')]  timeout=10s
   #  Scroll Element Into View      xpath=//button[contains(text(),'ส่วนที่ 2 :สถานที่ดำเนินโครงการ')]
@@ -64,7 +64,7 @@ Fill Tab2 Part2
          Scroll Element Into View      xpath=//button[contains(text(),'บันทึก')]
          Click Button    xpath=//button[contains(text(),'บันทึก')]
 
-Fill Tab2 Part3
+กรอกข้อมูลส่วนที่3:กลุ่มเป้าหมายและผู้มีส่วนได้ส่วนเสีย
 # คลิกแท็บขยาย
     Wait Until Element Is Visible   xpath=//button[contains(text(),'ส่วนที่ 3 : กลุ่มเป้าหมาย และผู้มีส่วนได้ส่วนเสีย')]  timeout=10s
     Scroll Element Into View      xpath=//button[contains(text(),'ส่วนที่ 3 : กลุ่มเป้าหมาย และผู้มีส่วนได้ส่วนเสีย')]
@@ -81,8 +81,7 @@ Fill Tab2 Part3
     Wait Until Element Is Visible    xpath=//input[@name='formData.stakeHolder']   10s
     Input Text    xpath=//input[@name='formData.stakeHolder']    ${stakeHolder}
 
-
-Fill Tab2 Part4
+กรอกข้อมูลส่วนที่4:เป้าหมาย ผลลัพท์ และผลกระทบโครงการ
 # คลิกแท็บขยาย
     Wait Until Element Is Visible   xpath=//button[contains(text(),'ส่วนที่ 4 : เป้าหมาย ผลลัพท์ และผลกระทบโครงการ')]  timeout=10s
     Scroll Element Into View      xpath=//button[contains(text(),'ส่วนที่ 4 : เป้าหมาย ผลลัพท์ และผลกระทบโครงการ')]
@@ -114,7 +113,7 @@ Fill Tab2 Part4
     Wait Until Element Is Visible    xpath=//textarea[@name='formData.negativeImpact']   10s
     Input Text    xpath=//textarea[@name='formData.negativeImpact']    ${negativeImpact}
 
-Click Next Button Tab2
+กดปุ่มถัดไปเพื่อบันทึกข้อมูลTab2
     Scroll Element Into View    xpath=//button[@id='next-2']
     Wait Until Element Is Visible    xpath=//button[@id='next-2']   10s
     Sleep    1s

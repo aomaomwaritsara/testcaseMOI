@@ -2,13 +2,14 @@
 Library  SeleniumLibrary
 
 *** Keywords ***
-Open Login Page
+
+Open Browser To Application
     Open Browser    ${LOGIN_URL}    chrome
     Maximize Browser Window
 SeleniumLibrary.Wait Until Element Is Visible   //*[@id="loginField"]  
 
 
-Input Credentials
+กรอกข้อมูลเข้าสู่ระบบ
     [Arguments]    ${username}    ${password}
     
     Input Text    //*[@id="loginField"]  ${username}
@@ -18,14 +19,14 @@ Input Credentials
     Click Button    xpath=//input[@value='เข้าสู่ระบบ']
 
 
-Verify Login Successful
-    Wait Until Page Contains    หน้าแรก    timeout=10s
-    Capture Page Screenshot
+ล็อคอินถูกต้อง
+    Wait Until Page Contains    หน้าแรก    
+   
 
-Verify Login Failed
-    Wait Until Page Contains    ไม่พบรหัสผู้ใช้ในระบบ   timeout=10s
-    Capture Page Screenshot
+ล็อคอินไม่ถูกต้อง
+    Wait Until Page Contains    ไม่พบรหัสผู้ใช้ในระบบ   
+    
 
 
-Close Browser Session
+Close Browser
     Close Browser
