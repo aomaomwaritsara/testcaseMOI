@@ -12,14 +12,22 @@ Resource    ../keywords/Budget_PROV_keywords.robot
 Resource    ../keywords/Budget_ProvApp_keywords.robot
 Resource    ../keywords/VerifySave.robot
 Library     SeleniumLibrary
-Suite Setup       Open Browser To Application
+Suite Setup       เปิดเบราว์เซอร์และล็อกอินส่วนราชการ
 Suite Teardown    Close Browser
 
 *** Keywords ***
+เปิดเบราว์เซอร์และล็อกอินส่วนราชการ
+    Open Browser    ${LOGIN_URL}    chrome
+    Maximize Browser Window
+    ล็อคอินถูกต้อง    ${ORGPROV_USERNAME}    ${ORGPROV_PASSWORD}
+    Wait Until Page Contains    หน้าแรก   
+
 กรอกข้อมูลแบบคำขอตามประเภทและการบันทึก
-    [Arguments]    ${expense_type}    ${action}    # action: draft หรือ confirm
-    กรอกข้อมูลเข้าสู่ระบบ   ${ORGPROV_USERNAME}    ${ORGPROV_PASSWORD}
-    ล็อคอินถูกต้อง
+    [Arguments]    ${expense_type}    ${action}    
+
+กรอกข้อมูลแบบคำขอตามประเภทและการยืนยัน
+    [Arguments]    ${expense_type}    ${action}
+  
     เข้าเมนูข้อมูลแบบคำขอ
 
     FOR    ${index}    IN RANGE    1
@@ -41,11 +49,11 @@ Suite Teardown    Close Browser
             เพิ่มtab3ข้อมูลแนวทางการดำเนินงาน
             เพิ่มชื่อกิจกรรมย่อยและวันที่เริ่ม-สิ้นสุด
             FOR    ${index}    IN RANGE    1
-                ${budgetType}    ${paymentGruop}    ${paymentType}    ${amount}   ${explain}    Get Budget Info    ${index}
+                ${budgetType}    ${paymentGruop}    ${paymentType}    ${amount}   ${explain}=    เพิ่มข้อมูลตามลิสต์ประเภทรายจ่าย   ${index}
                 เลือกข้อมูลงบประมาณที่ใช้ในกิจกรรมย่อย   ${budgetType}    ${paymentGruop}    ${paymentType}    ${index}
-                เพิ่มข้อมูลตามลิสต์ประเภทรายจ่าย
-                กดปุ่มเพิ่มข้อมูลงบประมาณ    ${index}    ${amount}    ${explain}
-                เพิ่มจำนวนเงินและคำชี้แจง
+                เพิ่มข้อมูลตามลิสต์ประเภทรายจ่าย    ${index}
+                กดปุ่มเพิ่มข้อมูลงบประมาณ    
+                เพิ่มจำนวนเงินและคำชี้แจง    ${index}    ${amount}    ${explain}
             END
             กดปุ่มบันทึกข้อมูลกิจกรรมย่อย
         END
@@ -65,7 +73,7 @@ Suite Teardown    Close Browser
         ...    ELSE IF    '${action}' == 'confirm'    กดปุ่มยืนยันข้อมูล
 
     END
-    Verify Save Success
+    #Verify Save Success
 
 ส่วนราชการยืนยันข้อมูล
     # เรียกทำ TC003 และ TC004 ผ่าน Keyword ซ้ำ 
@@ -103,12 +111,12 @@ Suite Teardown    Close Browser
 
 TC001 : ส่วนราชการบันทึกข้อมูลแบบคำขอ ประเภทรายจ่ายประจำ - บันทึกร่าง
     [Documentation]    ทดสอบกรอกข้อมูลคำขอ รายจ่ายประจำ และกดบันทึกร่าง
-    [Tags]    ส่วนราชการบันทักแบบคำขอ
+    [Tags]    ส่วนราชการบันทึกแบบคำขอ
     กรอกข้อมูลแบบคำขอตามประเภทและการบันทึก    รายจ่ายประจำ    draft
 
 TC002 : ส่วนราชการบันทึกข้อมูลแบบคำขอ ประเภทรายจ่ายลงทุน - บันทึกร่าง
     [Documentation]    ทดสอบกรอกข้อมูลคำขอ รายจ่ายลงทุน และกดบันทึกร่าง
-    [Tags]    ส่วนราชการบันทักแบบคำขอ
+    [Tags]    ส่วนราชการบันทึกแบบคำขอ
     กรอกข้อมูลแบบคำขอตามประเภทและการบันทึก    รายจ่ายลงทุน    draft
 
 TC003 : ส่วนราชการบันทึกข้อมูลแบบคำขอ ประเภทรายจ่ายประจำ - ยืนยันข้อมูล

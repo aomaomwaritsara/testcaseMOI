@@ -20,7 +20,7 @@ Library    BuiltIn
     Wait Until Element Is Visible    xpath=//button[contains(text(),'เพิ่มข้อมูล')]    10s
     Click Button    xpath=//button[contains(text(),'เพิ่มข้อมูล')]
     Sleep    5s  # รอให้หน้าโหลด 
-กรอกข้อมูลส่วนที่1:ข้อมูล
+กรอกข้อมูลtab1ส่วนที่1:ข้อมูล
     [Documentation]    เพิ่ม tab1 ส่วนที่ 1 ข้อมูล
     Sleep    5s  # รอให้หน้าโหลดก่อน   
 #   เลือก ปีงบประมาณ (บังคับเลือก 2567)
@@ -54,7 +54,7 @@ Library    BuiltIn
      Wait Until Element Is Visible   xpath=//select[@name='projectId']    timeout=10s
      Click Element    xpath=//select[@name='projectId']
      ${element_project}    Get WebElement    xpath=//select[@name='projectId']
-     Run Keyword And Warn On Failure    Select From List By Value     ${element_project}  15
+     Run Keyword And Warn On Failure    Select From List By Value     ${element_project}  26
      Sleep    3s  # รอให้ค่าใน dropdown ถูกอัปเดต
      #${project}    Get Selected List Label    xpath=//select[@name='projectId']
      #Log    ค่าในดรอปดาวน์: ${project}    
@@ -65,7 +65,7 @@ Library    BuiltIn
     # ดึงวันที่และเวลาปัจจุบันในรูปแบบ YYYYMMDD-HH:MM:SS
     ${DATE_TIME}=    Get Current Date    result_format=%d%m%Y-%H:%M:%S
     # รวมวันที่ + เวลา + ชื่อกิจกรรม
-    ${activity_with_time}=    Set Variable    ${DATE_TIME} (${activity})รายจ่ายลงทุน IMP
+    ${activity_with_time}=    Set Variable    ${DATE_TIME} (${activity})
     # กรอกข้อมูลลงในฟอร์ม
     Input Text    xpath=//input[@name='formData.mainActivity']    ${activity_with_time}
     # รอให้ input ปรากฏเพื่อความแน่ใจ
@@ -90,7 +90,7 @@ Library    BuiltIn
      Run Keyword And Warn On Failure    Select From List By Value     ${element_sdgs}  1
      Sleep    3s 
 
-กรอกข้อมูลส่วนที่2:ข้อมูลผู้รับผิดชอบ
+กรอกข้อมูลtab1ส่วนที่2:ข้อมูลผู้รับผิดชอบ
     [Documentation]    เพิ่ม tab1 ส่วนที่ 2 ข้อมูลผู้รับผิดชอบ
 # คลิกแท็บขยาย
     Wait Until Element Is Visible   xpath=//button[contains(text(),'ส่วนที่ 2 : ข้อมูลผู้รับผิดชอบ')]    timeout=10s
@@ -113,7 +113,7 @@ Library    BuiltIn
 #   หมายเลขโทรศัพท์
     Wait Until Page Contains    หมายเลขโทรศัพท์    10s
     Input Text    xpath=//input[@name='formData.tel']   0212828333 ต่อ 1
-กรอกข้อมูลส่วนที่3:หลักการและเหตุผล
+กรอกข้อมูลtab1ส่วนที่3:หลักการและเหตุผล
     [Documentation]    เพิ่ม tab1 ส่วนที่ 3 หลักการและเหตุผล
     # คลิกแท็บขยาย
     Wait Until Element Is Visible   xpath=//button[contains(text(),'ส่วนที่ 3 : หลักการและเหตุผล')]  timeout=10s
@@ -124,7 +124,7 @@ Library    BuiltIn
     Wait Until Element Is Visible    xpath=//textarea[@name='formData.reason']   timeout=10s
     Input Text    xpath=//textarea[@name='formData.reason']    ${reason}
 
-กรอกข้อมูลส่วนที่4:สรุปสาระสำคัญ
+กรอกข้อมูลtab1ส่วนที่4:สรุปสาระสำคัญ
    [Documentation]    เพิ่ม tab1 ส่วนที่ 4 สรุปสาระสำคัญ
     # คลิกแท็บขยาย
     Wait Until Element Is Visible   xpath=(//button[contains(text(),'ส่วนที่ 4 : สรุปสาระสำคัญ')])[1]   timeout=10s

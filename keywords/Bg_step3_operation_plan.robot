@@ -5,7 +5,7 @@ Library    BuiltIn
 
 *** Keywords ***
 
-เพิ่มข้อมูลแนวทางการดำเนินงาน
+เพิ่มtab3ข้อมูลแนวทางการดำเนินงาน
     [Documentation]   กดปุ่มเพิ่มข้อมูลแนวทางการดำเนินงาน
     Wait Until Element Is Visible    xpath=//button[@onclick="doCmd('goCreateSubActivity')"]   10s
     Click Button    xpath=//button[@onclick="doCmd('goCreateSubActivity')"]

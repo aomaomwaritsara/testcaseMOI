@@ -5,7 +5,7 @@ Library    BuiltIn
 
 *** Keywords ***
 
-กรอกข้อมูลส่วนที่1:ข้อมูลทั่วไปของโครงการ
+กรอกข้อมูลtab2ส่วนที่1:ข้อมูลทั่วไปของโครงการ
    [Documentation]    เพิ่ม tab2 ส่วนที่ 1 ข้อมูลทั่วไปโครงการ
     # คลิกแท็บขยาย
     
@@ -32,7 +32,7 @@ Library    BuiltIn
     Wait Until Element Is Visible    xpath=//input[@name='formData.endYear']  timeout=10s
     Input Text    xpath=//input[@name='formData.endYear']   2569
 
-กรอกข้อมูลส่วนที่2:สถานที่ดำเนินโครงการ
+กรอกข้อมูลtab2ส่วนที่2:สถานที่ดำเนินโครงการ
 # คลิกแท็บขยาย
   #  Wait Until Element Is Visible   xpath=//button[contains(text(),'ส่วนที่ 2 :สถานที่ดำเนินโครงการ')]  timeout=10s
   #  Scroll Element Into View      xpath=//button[contains(text(),'ส่วนที่ 2 :สถานที่ดำเนินโครงการ')]
@@ -64,7 +64,7 @@ Library    BuiltIn
          Scroll Element Into View      xpath=//button[contains(text(),'บันทึก')]
          Click Button    xpath=//button[contains(text(),'บันทึก')]
 
-กรอกข้อมูลส่วนที่3:กลุ่มเป้าหมายและผู้มีส่วนได้ส่วนเสีย
+กรอกข้อมูลtab2ส่วนที่3:กลุ่มเป้าหมายและผู้มีส่วนได้ส่วนเสีย
 # คลิกแท็บขยาย
     Wait Until Element Is Visible   xpath=//button[contains(text(),'ส่วนที่ 3 : กลุ่มเป้าหมาย และผู้มีส่วนได้ส่วนเสีย')]  timeout=10s
     Scroll Element Into View      xpath=//button[contains(text(),'ส่วนที่ 3 : กลุ่มเป้าหมาย และผู้มีส่วนได้ส่วนเสีย')]
@@ -81,7 +81,7 @@ Library    BuiltIn
     Wait Until Element Is Visible    xpath=//input[@name='formData.stakeHolder']   10s
     Input Text    xpath=//input[@name='formData.stakeHolder']    ${stakeHolder}
 
-กรอกข้อมูลส่วนที่4:เป้าหมาย ผลลัพท์ และผลกระทบโครงการ
+กรอกข้อมูลtab2ส่วนที่4:เป้าหมาย ผลลัพท์ และผลกระทบโครงการ
 # คลิกแท็บขยาย
     Wait Until Element Is Visible   xpath=//button[contains(text(),'ส่วนที่ 4 : เป้าหมาย ผลลัพท์ และผลกระทบโครงการ')]  timeout=10s
     Scroll Element Into View      xpath=//button[contains(text(),'ส่วนที่ 4 : เป้าหมาย ผลลัพท์ และผลกระทบโครงการ')]

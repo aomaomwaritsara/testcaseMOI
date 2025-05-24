@@ -3,7 +3,7 @@ Library  SeleniumLibrary
 Library    BuiltIn
 
 *** Keywords ***
-Fill Tab4 Part1
+กรอกข้อมูลtab4ส่วนที่1:ข้อมูลทั่วไปของโครงการ
     [Documentation]    เพิ่ม tab4 ส่วนที่ 1 ความพร้อมของโครงการ
 #   รายงานความสำเร็จของการดำเนินงานที่ผ่านมา
     Wait Until Element Is Visible    xpath=//textarea[@name='formData.successReport']    timeout=10s
@@ -12,7 +12,7 @@ Fill Tab4 Part1
     Wait Until Element Is Visible    xpath=//input[@id='localMission1']    timeout=10s
     Click Element    xpath=//input[@id='localMission1']
 
-Fill Tab4 Part2
+กรอกข้อมูลtab4ส่วนที่2:ความพร้อมของโครงการ
 # คลิกแท็บขยาย
     Wait Until Element Is Visible   xpath=//button[contains(text(),'ส่วนที่ 2 : ความพร้อมของโครงการ')]    timeout=10s
     Scroll Element Into View      xpath=//button[contains(text(),'ส่วนที่ 2 : ความพร้อมของโครงการ')]
@@ -52,7 +52,7 @@ Fill Tab4 Part2
     Wait Until Element Is Visible    xpath=//input[@id='radioFs1']   timeout=10s
     Click Element    xpath=//input[@id='radioFs1']
 
-Fill Tab4 Part3
+กรอกข้อมูลtab4ส่วนที่3:วิธีการบริหารจัดการเมื่อโครงการแล้วเสร็จ
 # คลิกแท็บขยาย
     Wait Until Element Is Visible   xpath=//button[contains(text(),'ส่วนที่ 3 : วิธีการบริหารจัดการหรือการดูแลบำรุงรัก')]   timeout=10s
     Scroll Element Into View      xpath=//button[contains(text(),'ส่วนที่ 3 : วิธีการบริหารจัดการหรือการดูแลบำรุงรัก')]
@@ -68,7 +68,7 @@ Fill Tab4 Part3
     Wait Until Element Is Visible    xpath=//textarea[@name='formData.obstacle']  timeout=10s
     Input Text    xpath=//textarea[@name='formData.obstacle']    ${obstacle}
 
-Click Next Button Tab4
+กดปุ่มถัดไปเพื่อบันทึกข้อมูลtab4
     Scroll Element Into View    xpath=//button[@id='next-4']
     Wait Until Element Is Visible    xpath=//button[@id='next-4']   10s
     Sleep    1s
