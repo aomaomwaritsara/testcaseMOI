@@ -50,3 +50,7 @@ Library    BuiltIn
 # รอให้ป๊อปอัปหายไปก่อน
     Wait Until Element Is Not Visible    xpath=//div[contains(@class, 'swal2-container')]    timeout=30s
     Sleep    1s
+
+Logout
+    Click Element    xpath=//a[contains(text(),'Logout')]
+    Wait Until Page Contains    Login    10s
