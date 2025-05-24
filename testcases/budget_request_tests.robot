@@ -2,13 +2,14 @@
 Documentation    Test cases for Budget Request Functionality
 Resource    ../resources/config.robot
 Resource    ../resources/testdata.robot
-Resource    ../keywords/login_keywords.robot
+Resource    ../keywords/Login_keywords.robot
 Resource    ../keywords/Bg_step1_request_reason.robot
 Resource    ../keywords/Bg_step2_general_info.robot
 Resource    ../keywords/Bg_step3_operation_plan.robot
 Resource    ../keywords/Bg_step4_project_readiness.robot
 Resource    ../keywords/Bg_step5_project_status.robot
-Resource    ../keywords/budget_provapp_keywords.robot
+Resource    ../keywords/Budget_PROV_keywords.robot
+Resource    ../keywords/Budget_ProvApp_keywords.robot
 Resource    ../keywords/VerifySave.robot
 Library     SeleniumLibrary
 Suite Setup       Open Browser To Application
@@ -71,18 +72,25 @@ Suite Teardown    Close Browser
     กรอกข้อมูลแบบคำขอตามประเภทและการยืนยัน    รายจ่ายประจำ    confirm
     กรอกข้อมูลแบบคำขอตามประเภทและการยืนยัน    รายจ่ายลงทุน    confirm
 
+ล็อกอินเจ้าหน้าที่จังหวัด
+    ล็อคอินถูกต้อง    ${PRO_USERNAME}    ${PRO_PASSWORD}
+
 เจ้าหน้าที่จังหวัดพิจารณาคำขอ
     [Arguments]    ${action}
     ส่วนราชการยืนยันข้อมูล
+    ล็อกอินเจ้าหน้าที่จังหวัด
     จังหวัดเข้าเมนูแบบคำขอ
     เลือกช่องทั้งหมด
     Run Keyword If    '${action}' == 'ยืนยัน'         กดปุ่มจังหวัดยืนยัน
     ...               ELSE IF    '${action}' == 'ส่งกลับแก้ไข'    กดปุ่มส่งกลับแก้ไข
     ...               ELSE    Fail    Invalid action: ${action}
+ล็อกอินกบจ
+    ล็อคอินถูกต้อง    ${PROAPP_USERNAME}    ${PROAPP_PASSWORD}
 
 กบจพิจารณาแบบคำขอตามสถานะ
     [Arguments]    ${action}
     ส่วนราชการยืนยันข้อมูล
+    ล็อกอินกบจ
     กบจเข้าเมนูแบบคำขอ
     เลือกช่องทั้งหมด
     Run Keyword If    '${action}' == 'เห็นชอบ'           กดปุ่มเห็นชอบ

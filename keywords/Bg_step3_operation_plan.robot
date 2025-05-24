@@ -33,10 +33,10 @@ Library    BuiltIn
 เพิ่มข้อมูลตามลิสต์ประเภทรายจ่าย
     [Arguments]    ${index}
     # สร้าง list สำหรับข้อมูลต่างๆ
-    ${budgetTypes}    Create List    400000    300000    400000    600000    500000
-    ${paymentGroups}    Create List    410000    310000    410000    610000    510000
-    ${paymentTypes}    Create List    5410100    5310100    5410100    5610100    5510100
-    ${amounts}    Create List    200000    200000    200000    200000    200000
+    ${budgetTypes}    Create List        300000    400000    500000
+    ${paymentGroups}    Create List      310000    410000    510000
+    ${paymentTypes}    Create List       5310100   5410100   5510100
+    ${amounts}    Create List    200000    200000    200000    
     ${explains}    Create List    คำชี้แจง1    คำชี้แจง2      คำชี้แจง3   
     ${budgetType}    Get From List    ${budgetTypes}    ${index}
     ${paymentGruop}    Get From List    ${paymentGroups}    ${index}
